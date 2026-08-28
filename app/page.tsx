@@ -1,7 +1,7 @@
-import { getAllPhotographers } from "../lib/db";
-import PhotographerCard from "../components/photographerCard";
+import { getAllPhotographers } from "@/lib/db";
+import PhotographerCard from "@/components/photographerCard";
 
-export default async function HomePage() {
+const HomePage = async () => {
   const photographers = await getAllPhotographers();
 
   return (
@@ -15,8 +15,10 @@ export default async function HomePage() {
           <li key={photographer.id}>
             <PhotographerCard photographer={photographer} priority={index === 0} />
           </li>
-))}
+        ))}
       </ul>
     </main>
   );
-}
+};
+
+export default HomePage;

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 type Photographer = {
   id: number;
@@ -11,13 +11,12 @@ type Photographer = {
   portrait: string;
 };
 
-export default function PhotographerCard({
-  photographer,
-  priority = false,
-}: {
+type Props = {
   photographer: Photographer;
   priority?: boolean;
-}) {
+};
+
+const PhotographerCard = ({ photographer, priority = false }: Props) => {
   const { id, name, city, country, tagline, price, portrait } = photographer;
 
   return (
@@ -43,4 +42,6 @@ export default function PhotographerCard({
       <p className="font-bold mt-1">{price}€/jour</p>
     </article>
   );
-}
+};
+
+export default PhotographerCard;
