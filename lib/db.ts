@@ -1,7 +1,3 @@
-// Data access layer. This is the only file that talks to Prisma directly —
-// components and pages should always go through these functions instead of
-// importing PrismaClient themselves.
-
 import { PrismaClient } from "../app/generated/prisma/client";
 import { PrismaLibSql } from "@prisma/adapter-libsql";
 
@@ -15,19 +11,19 @@ export function getAllPhotographers() {
   return prisma.photographer.findMany();
 }
 
-export function getPhotographer(id) {
+export function getPhotographer(id: string | number) {
   return prisma.photographer.findUnique({
     where: { id: Number(id) },
   });
 }
 
-export function getAllMediasForPhotographer(photographerId) {
+export function getAllMediasForPhotographer(photographerId: string | number) {
   return prisma.media.findMany({
     where: { photographerId: Number(photographerId) },
   });
 }
 
-export function updateNumberOfLikes(mediaId, newNumberOfLikes) {
+export function updateNumberOfLikes(mediaId: number, newNumberOfLikes: number) {
   return prisma.media.update({
     where: { id: mediaId },
     data: { likes: newNumberOfLikes },
