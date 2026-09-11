@@ -32,22 +32,22 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
       aria-modal="true"
       className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 px-6"
     >
-      <div className="bg-[#faf7f2] rounded-xl w-full max-w-md p-8 relative">
+      <div className="bg-paper rounded-xl w-full max-w-md p-8 relative">
         <button
           type="button"
           onClick={onClose}
           aria-label="Close dialog"
-          className="absolute top-4 right-4 text-2xl leading-none text-[#901C1C]"
+          className="absolute top-4 right-4 text-2xl leading-none text-primary"
         >
           ✕
         </button>
 
-        <h2 className="text-2xl font-serif text-[#901C1C] mb-6">
+        <h2 className="text-2xl font-serif text-primary mb-6">
           Contactez-moi {photographerName}
         </h2>
 
         {isSubmitted ? (
-          <p aria-live="polite" className="text-[#901C1C] font-semibold">
+          <p aria-live="polite" className="text-primary font-semibold">
             Message envoyé !
           </p>
         ) : (
@@ -61,7 +61,7 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
                 name="name"
                 type="text"
                 required
-                className="border border-[#e7ded3] rounded-lg px-3 py-2"
+                className="border border-line rounded-lg px-3 py-2"
               />
             </div>
 
@@ -74,7 +74,7 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
                 name="email"
                 type="email"
                 required
-                className="border border-[#e7ded3] rounded-lg px-3 py-2"
+                className="border border-line rounded-lg px-3 py-2"
               />
             </div>
 
@@ -87,13 +87,13 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
                 name="message"
                 rows={4}
                 required
-                className="border border-[#e7ded3] rounded-lg px-3 py-2"
+                className="border border-line rounded-lg px-3 py-2"
               />
             </div>
 
             <button
               type="submit"
-              className="bg-[#901C1C] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#6e1515] mt-2"
+              className="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-dark mt-2"
             >
               Envoyer
             </button>

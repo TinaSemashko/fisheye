@@ -6,7 +6,7 @@ const HomePage = async () => {
 
   return (
     <main className="max-w-7xl mx-auto px-8 py-10">
-      <h1 className="text-3xl font-serif text-[#901C1C] mb-8">
+      <h1 className="text-3xl font-serif text-primary mb-8">
         Nos photographes
       </h1>
 

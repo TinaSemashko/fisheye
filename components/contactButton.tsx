@@ -16,7 +16,7 @@ const ContactButton = ({ photographerName }: Props) => {
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label="Contact Me"
-        className="bg-[#901C1C] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#6e1515] whitespace-nowrap"
+        className="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-primary-dark whitespace-nowrap"
       >
         Contactez-moi
       </button>

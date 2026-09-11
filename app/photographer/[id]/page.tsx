@@ -20,10 +20,10 @@ const PhotographerPage = async ({ params }: Props) => {
 
   return (
     <main className="max-w-7xl mx-auto px-8 py-10">
-      <div className="flex items-center justify-between gap-8 border-b border-[#e7ded3] pb-8 mb-8">
+      <div className="flex items-center justify-between gap-8 border-b border-line pb-8 mb-8">
         <div>
-          <h1 className="text-3xl font-serif text-[#901C1C] m-0">{name}</h1>
-          <p className="text-[#D3573C] font-semibold mt-2 mb-1">
+          <h1 className="text-3xl font-serif text-primary m-0">{name}</h1>
+          <p className="text-secondary font-semibold mt-2 mb-1">
             {city}, {country}
           </p>
           <p className="text-gray-500 m-0">{tagline}</p>

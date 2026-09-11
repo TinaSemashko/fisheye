@@ -33,9 +33,9 @@ const PhotographerCard = ({ photographer, priority = false }: Props) => {
           priority={priority}
           className="w-44 h-44 rounded-full object-cover mb-3"
         />
-        <h2 className="text-xl font-serif text-[#D3573C] m-0">{name}</h2>
+        <h2 className="text-xl font-serif text-secondary m-0">{name}</h2>
       </Link>
-      <p className="text-[#901C1C] font-semibold m-0">
+      <p className="text-primary font-semibold m-0">
         {city}, {country}
       </p>
       <p className="text-gray-500 max-w-[220px] m-0">{tagline}</p>

@@ -107,7 +107,7 @@ const MediaGallery = ({ medias }: Props) => {
     <>
       <div className="flex items-center justify-between gap-3 mb-6">
         <p className="text-gray-500 m-0">
-          Total : <span className="font-bold text-[#901C1C]">{totalLikes} ♥</span>
+          Total : <span className="font-bold text-primary">{totalLikes} ♥</span>
         </p>
 
         <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ const MediaGallery = ({ medias }: Props) => {
             id="sort-select"
             value={sortBy}
             onChange={(event) => setSortBy(event.target.value as SortOption)}
-            className="border border-[#e7ded3] rounded-lg px-3 py-2 bg-white"
+            className="border border-line rounded-lg px-3 py-2 bg-white"
           >
             <option value="popularity">Popularité</option>
             <option value="date">Date</option>
@@ -163,8 +163,8 @@ const MediaGallery = ({ medias }: Props) => {
                     onClick={() => handleLike(media.id)}
                     aria-pressed={isLiked}
                     aria-label={`${isLiked ? "Retirer le like de" : "Liker"} la photo ${media.title}, ${media.likes} likes actuellement`}
-                    className={`flex items-center gap-1 hover:text-[#901C1C] ${
-                      isLiked ? "text-[#901C1C] font-semibold" : "text-gray-500"
+                    className={`flex items-center gap-1 hover:text-primary ${
+                      isLiked ? "text-primary font-semibold" : "text-gray-500"
                     }`}
                   >
                     {media.likes} ♥
