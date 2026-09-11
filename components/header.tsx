@@ -6,7 +6,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-8 py-5">
         <Link
           href="/"
-          aria-label="Fisheye Home page"
+          aria-label="Fisheye Homepage"
           className="inline-flex items-center gap-2 no-underline"
         >
           <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
