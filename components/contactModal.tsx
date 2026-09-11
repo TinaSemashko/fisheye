@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
+
 type Props = {
   photographerName: string;
   onClose: () => void;
 };
 
 const ContactModal = ({ photographerName, onClose }: Props) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -12,7 +18,7 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
       email: formData.get("email"),
       message: formData.get("message"),
     });
-    onClose();
+    setIsSubmitted(true);
   };
 
   return (
@@ -36,53 +42,59 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
           Contactez-moi {photographerName}
         </h2>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
-            <label htmlFor="contact-name" className="font-semibold">
-              Prénom
-            </label>
-            <input
-              id="contact-name"
-              name="name"
-              type="text"
-              required
-              className="border border-[#e7ded3] rounded-lg px-3 py-2"
-            />
-          </div>
+        {isSubmitted ? (
+          <p aria-live="polite" className="text-[#901C1C] font-semibold">
+            Message envoyé !
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+              <label htmlFor="contact-name" className="font-semibold">
+                Prénom
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                className="border border-[#e7ded3] rounded-lg px-3 py-2"
+              />
+            </div>
 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="contact-email" className="font-semibold">
-              Email
-            </label>
-            <input
-              id="contact-email"
-              name="email"
-              type="email"
-              required
-              className="border border-[#e7ded3] rounded-lg px-3 py-2"
-            />
-          </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="contact-email" className="font-semibold">
+                Email
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                className="border border-[#e7ded3] rounded-lg px-3 py-2"
+              />
+            </div>
 
-          <div className="flex flex-col gap-1">
-            <label htmlFor="contact-message" className="font-semibold">
-              Votre message
-            </label>
-            <textarea
-              id="contact-message"
-              name="message"
-              rows={4}
-              required
-              className="border border-[#e7ded3] rounded-lg px-3 py-2"
-            />
-          </div>
+            <div className="flex flex-col gap-1">
+              <label htmlFor="contact-message" className="font-semibold">
+                Votre message
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={4}
+                required
+                className="border border-[#e7ded3] rounded-lg px-3 py-2"
+              />
+            </div>
 
-          <button
-            type="submit"
-            className="bg-[#901C1C] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#6e1515] mt-2"
-          >
-            Envoyer
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="bg-[#901C1C] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#6e1515] mt-2"
+            >
+              Envoyer
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

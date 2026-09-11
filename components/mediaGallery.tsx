@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 type MediaItem = {
@@ -69,32 +69,32 @@ const MediaGallery = ({ medias }: Props) => {
 
   const closeLightbox = () => setLightboxIndex(null);
 
-  const showPrev = () => {
+  const showPrev = useCallback(() => {
     setLightboxIndex((current) => {
       if (current === null) return current;
       return (current - 1 + sortedMedias.length) % sortedMedias.length;
     });
-  };
+  }, [sortedMedias.length]);
 
-  const showNext = () => {
+  const showNext = useCallback(() => {
     setLightboxIndex((current) => {
       if (current === null) return current;
       return (current + 1) % sortedMedias.length;
     });
-  };
+  }, [sortedMedias.length]);
 
   useEffect(() => {
-    if (lightboxIndex === null) return;
+  if (lightboxIndex === null) return;
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeLightbox();
-      if (event.key === "ArrowLeft") showPrev();
-      if (event.key === "ArrowRight") showNext();
-    };
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") closeLightbox();
+    if (event.key === "ArrowLeft") showPrev();
+    if (event.key === "ArrowRight") showNext();
+  };
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxIndex, sortedMedias.length]);
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, [lightboxIndex, showPrev, showNext]);
 
   const activeMedia = lightboxIndex !== null ? sortedMedias[lightboxIndex] : null;
 
