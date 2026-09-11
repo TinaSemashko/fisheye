@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 type Props = {
   photographerName: string;
@@ -9,6 +10,8 @@ type Props = {
 
 const ContactModal = ({ photographerName, onClose }: Props) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useFocusTrap(dialogRef, true);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,6 +26,7 @@ const ContactModal = ({ photographerName, onClose }: Props) => {
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-label={`Contactez ${photographerName}`}
       aria-modal="true"

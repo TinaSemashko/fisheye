@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 type MediaItem = {
   id: number;
@@ -25,6 +26,8 @@ const MediaGallery = ({ medias }: Props) => {
   );
   const [likedIds, setLikedIds] = useState<Set<number>>(new Set());
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+
 
   const handleLike = (mediaId: number) => {
     const alreadyLiked = likedIds.has(mediaId);
@@ -97,6 +100,8 @@ const MediaGallery = ({ medias }: Props) => {
 }, [lightboxIndex, showPrev, showNext]);
 
   const activeMedia = lightboxIndex !== null ? sortedMedias[lightboxIndex] : null;
+
+  useFocusTrap(lightboxRef, activeMedia !== null);
 
   return (
     <>
@@ -177,6 +182,7 @@ const MediaGallery = ({ medias }: Props) => {
           aria-label="image closeup view"
           aria-modal="true"
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 px-6"
+          ref={lightboxRef}
         >
           <button
             type="button"
